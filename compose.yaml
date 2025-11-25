@@ -11,7 +11,10 @@ services:
     environment:
       - ConnectionStrings:DefaultConnection=Server=db;Database=master;User Id=sa;Password=YourStrongPassword!;
       - ACCEPT_EULA=Y
-    restart: unless-stopped
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ./AspNetApp:/app/src
+    command: dotnet watch run --urls http://+:8080
 
   db:
     image: "mcr.microsoft.com/mssql/server:2022-latest" 
