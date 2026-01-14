@@ -18,5 +18,5 @@ This repository represents a bare minimum for 1 .Net stack, implementing a conta
 
 
 
-http://localhost:8080/hello
+http://localhost:8080/
 
