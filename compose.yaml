@@ -9,7 +9,7 @@ services:
     depends_on:
       - db 
     environment:
-      - ConnectionStrings:DefaultConnection=Server=db;Database=master;User Id=sa;Password=YourStrongPassword!;
+      - ConnectionStrings__DefaultConnection=Server=db;Database=stackDB;User Id=sa;Password=YourStrongPassword!;TrustServerCertificate=True;
       - ACCEPT_EULA=Y
       - ASPNETCORE_ENVIRONMENT=Development
     volumes:
@@ -26,6 +26,8 @@ services:
       - "1433:1433" 
     volumes:
       - sql_server_data:/var/opt/mssql
+      - ./db:/docker-entrypoint-initdb.d
+    entrypoint: /bin/bash /docker-entrypoint-initdb.d/setup_db.sh
     restart: unless-stopped
 
 volumes:

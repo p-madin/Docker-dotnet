@@ -1,0 +1,20 @@
+# .NET Core
+bin/
+obj/
+out/
+[Bb]in/
+[Oo]bj/
+
+# IDEs
+.vs/
+.vscode/
+*.user
+*.userosscache
+*.sln.docstates
+
+# Docker
+# (Removed .dockerignore as it should be tracked)
+
+# OS files
+.DS_Store
+Thumbs.db

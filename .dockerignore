@@ -1,0 +1,10 @@
+**/.git
+**/.gitignore
+**/.vscode
+**/bin
+**/obj
+**/out
+Dockerfile
+compose.yaml
+README.md
+LICENSE

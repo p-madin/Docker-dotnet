@@ -1,0 +1,63 @@
+@page
+@model AspNetApp.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to AspNetApp</h1>
+    <p>A modern .NET application running in Docker with SQL Server.</p>
+
+    <hr />
+
+    <div class="mt-5 text-start mx-auto" style="max-width: 400px;">
+        <h4>Registered Users:</h4>
+        <ul class="list-group">
+            @foreach (var name in Model.UserNames)
+            {
+                <li class="list-group-item">@name</li>
+            }
+        </ul>
+    </div>
+
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <div class="alert alert-success mt-4">
+            <h3>You are authenticated!</h3>
+            <p>Welcome back, <strong>@User.Identity.Name</strong>.</p>
+            <p>Your custom session and user tables are being managed by ASP.NET Core Identity.</p>
+        </div>
+        
+        <div class="mt-4">
+            <p>Check out your <a asp-page="/hello" class="btn btn-outline-primary">Hello API</a></p>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info mt-4">
+            <h3>Please Log In</h3>
+            <p>To access protected features, please <a asp-page="/Account/Login">login</a> or <a asp-page="/Account/Register">register</a>.</p>
+        </div>
+        
+        <div class="row mt-5">
+            <div class="col-md-6 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">New User?</h5>
+                        <p class="card-text">Create an account to see how Identity maps to your custom schema.</p>
+                        <a asp-page="/Account/Register" class="btn btn-primary">Register</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Returning User?</h5>
+                        <p class="card-text">Log in to your existing account.</p>
+                        <a asp-page="/Account/Login" class="btn btn-success">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
